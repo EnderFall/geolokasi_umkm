@@ -1,61 +1,318 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Geolokasi UMKM Kuliner
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Platform digital yang menghubungkan UMKM kuliner lokal dengan pelanggan setia menggunakan teknologi geolokasi dan sistem rating yang transparan.
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Untuk UMKM Kuliner
+- **Dashboard Penjual**: Kelola outlet, menu, dan pesanan
+- **Manajemen Outlet**: Tambah, edit, dan kelola informasi outlet
+- **Manajemen Menu**: Kelola menu dengan gambar dan harga
+- **Sistem Verifikasi**: Outlet terverifikasi untuk kepercayaan pelanggan
+- **Analitik**: Lihat statistik outlet dan performa menu
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Untuk Pelanggan
+- **Pencarian Berdasarkan Lokasi**: Temukan outlet terdekat dengan GPS
+- **Pencarian Menu**: Cari menu berdasarkan nama, kategori, dan harga
+- **Sistem Rating & Review**: Berikan feedback untuk outlet dan menu
+- **Informasi Lengkap**: Lihat jam operasional, alamat, dan status outlet
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Untuk Admin
+- **Dashboard Admin**: Kelola semua outlet dan pengguna
+- **Sistem Verifikasi**: Verifikasi outlet baru
+- **Manajemen Pengguna**: Kelola role dan akses pengguna
+- **Monitoring Platform**: Lihat statistik keseluruhan platform
 
-## Learning Laravel
+## 🛠️ Teknologi yang Digunakan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: Laravel 11 (PHP 8.2+)
+- **Database**: SQLite (Development) / MySQL (Production)
+- **Frontend**: Bootstrap 5, Font Awesome
+- **Authentication**: Laravel Built-in Auth
+- **File Storage**: Laravel Storage
+- **Geolocation**: GPS Coordinates (Latitude/Longitude)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📋 Persyaratan Sistem
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- PHP 8.2 atau lebih tinggi
+- Composer
+- Node.js & NPM (untuk asset compilation)
+- Web server (Apache/Nginx) atau PHP built-in server
 
-## Laravel Sponsors
+## 🚀 Instalasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 1. Clone Repository
+```bash
+git clone <repository-url>
+cd geolokasi_umkm
+```
 
-### Premium Partners
+### 2. Install Dependencies
+```bash
+composer install
+npm install
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 3. Setup Environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+### 4. Konfigurasi Database
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Untuk Development (SQLite)
+```bash
+# Buat file database SQLite
+touch database/database.sqlite
 
-## Code of Conduct
+# Edit .env file
+DB_CONNECTION=sqlite
+# Comment semua konfigurasi MySQL
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Untuk Production (MySQL)
+```bash
+# Edit .env file
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=geolokasi_umkm
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-## Security Vulnerabilities
+### 5. Jalankan Migrasi dan Seeder
+```bash
+php artisan migrate:fresh --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6. Compile Assets
+```bash
+npm run dev
+# atau untuk production
+npm run build
+```
 
-## License
+### 7. Jalankan Aplikasi
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi akan berjalan di `http://localhost:8000`
+
+## 👥 Role Pengguna
+
+### 1. Super Admin
+- Akses penuh ke semua fitur
+- Kelola admin dan role pengguna
+- Verifikasi outlet
+
+### 2. Admin
+- Kelola outlet dan menu
+- Verifikasi outlet baru
+- Monitoring platform
+
+### 3. Penjual/Outlet
+- Kelola outlet sendiri
+- Tambah dan edit menu
+- Lihat pesanan dan review
+
+### 4. Pembeli
+- Cari outlet dan menu
+- Berikan rating dan review
+- Lihat informasi outlet
+
+## 🔐 Akun Default
+
+Setelah menjalankan seeder, tersedia akun default:
+
+### Super Admin
+- Email: superadmin@example.com
+- Password: password
+
+### Admin
+- Email: admin@example.com
+- Password: password
+
+### Penjual
+- Email: penjual@example.com
+- Password: password
+
+### Pembeli
+- Email: pembeli@example.com
+- Password: password
+
+## 📱 Fitur Aplikasi
+
+### 1. Halaman Utama
+- Hero section dengan search
+- Kategori populer
+- Outlet unggulan
+- Menu rekomendasi
+
+### 2. Sistem Pencarian
+- **Pencarian Outlet**: Berdasarkan nama, kategori, rating
+- **Pencarian Menu**: Berdasarkan nama, kategori, harga
+- **Pencarian Lokasi**: Berdasarkan koordinat GPS dan radius
+
+### 3. Dashboard
+- **Admin Dashboard**: Statistik platform, kelola outlet
+- **Penjual Dashboard**: Statistik outlet, kelola menu
+- **Pembeli Dashboard**: Riwayat pesanan, outlet favorit
+
+### 4. Manajemen Outlet
+- CRUD outlet dengan gambar
+- Kategori outlet
+- Jam operasional
+- Koordinat GPS
+
+### 5. Manajemen Menu
+- CRUD menu dengan gambar
+- Harga dan deskripsi
+- Status ketersediaan
+- Menu rekomendasi
+
+### 6. Sistem Rating & Review
+- Rating 1-5 bintang
+- Komentar untuk outlet dan menu
+- Verifikasi review
+
+### 7. Sistem Order
+- Pembuatan pesanan
+- Status pesanan
+- Riwayat pesanan
+
+## 🗄️ Struktur Database
+
+### Tabel Utama
+- `users` - Data pengguna
+- `roles` - Role pengguna
+- `outlets` - Data outlet
+- `menus` - Data menu
+- `categories` - Kategori outlet/menu
+- `ratings` - Rating outlet
+- `reviews` - Review menu
+- `orders` - Data pesanan
+- `order_items` - Item dalam pesanan
+
+### Relasi
+- User ↔ Role (Many-to-Many)
+- User ↔ Outlet (One-to-One)
+- Outlet ↔ Menu (One-to-Many)
+- Outlet ↔ Category (Many-to-Many)
+- User ↔ Rating (One-to-Many)
+- User ↔ Review (One-to-Many)
+- User ↔ Order (One-to-Many)
+
+## 🔧 Konfigurasi
+
+### File Storage
+- Gambar outlet dan menu disimpan di `storage/app/public/`
+- Jalankan `php artisan storage:link` untuk membuat symbolic link
+
+### Geolocation
+- Koordinat GPS disimpan dalam format decimal
+- Radius pencarian dalam kilometer
+- Sistem dapat diintegrasikan dengan Google Maps API
+
+### Email
+- Konfigurasi SMTP untuk notifikasi
+- Template email untuk verifikasi dan reset password
+
+## 🚀 Deployment
+
+### 1. Production Environment
+```bash
+# Set environment
+APP_ENV=production
+APP_DEBUG=false
+
+# Optimize
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+### 2. Web Server
+- Apache dengan mod_rewrite
+- Nginx dengan konfigurasi Laravel
+- SSL certificate untuk keamanan
+
+### 3. Database
+- MySQL dengan optimasi
+- Backup regular
+- Monitoring performa
+
+## 🧪 Testing
+
+```bash
+# Unit tests
+php artisan test
+
+# Feature tests
+php artisan test --testsuite=Feature
+
+# Browser tests
+php artisan dusk
+```
+
+## 📊 Monitoring
+
+### Logs
+- Laravel logs di `storage/logs/`
+- Error tracking
+- Performance monitoring
+
+### Analytics
+- User activity
+- Outlet performance
+- Search analytics
+
+## 🔒 Keamanan
+
+- CSRF protection
+- SQL injection prevention
+- XSS protection
+- File upload validation
+- Role-based access control
+- Input sanitization
+
+## 🤝 Kontribusi
+
+1. Fork repository
+2. Buat feature branch
+3. Commit changes
+4. Push ke branch
+5. Buat Pull Request
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+
+## 📞 Support
+
+- Email: support@geolokasi-umkm.com
+- Dokumentasi: [Wiki](wiki-url)
+- Issues: [GitHub Issues](issues-url)
+
+## 🗺️ Roadmap
+
+### Versi 1.1
+- [ ] Integrasi Google Maps API
+- [ ] Sistem notifikasi real-time
+- [ ] Mobile app (React Native)
+
+### Versi 1.2
+- [ ] Sistem pembayaran
+- [ ] Delivery tracking
+- [ ] Analytics dashboard
+
+### Versi 2.0
+- [ ] Multi-language support
+- [ ] Advanced search filters
+- [ ] Social media integration
+
+---
+
+**Dibuat dengan ❤️ untuk UMKM Kuliner Indonesia**
