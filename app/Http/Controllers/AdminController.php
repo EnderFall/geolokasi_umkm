@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Outlet;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -107,7 +108,7 @@ class AdminController extends Controller
 
     public function toggleUserStatus(User $user)
     {
-        if ($user->id === auth()->id()) {
+        if ($user->id === Auth::id()) {
             return redirect()->route('admin.users')->with('error', 'Tidak dapat mengubah status akun sendiri.');
         }
 
@@ -119,7 +120,7 @@ class AdminController extends Controller
 
     public function destroyUser(User $user)
     {
-        if ($user->id === auth()->id()) {
+        if ($user->id === Auth::id()) {
             return redirect()->route('admin.users')->with('error', 'Tidak dapat menghapus akun sendiri.');
         }
 
